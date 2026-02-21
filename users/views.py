@@ -202,3 +202,18 @@ def favorites(request):
         ).delete()
 
         return Response({"message": "Deleted from favorites"})
+@api_view(['POST'])
+def login(request):
+    username = request.data.get("username")
+    password = request.data.get("password")
+
+    user = authenticate(username=username, password=password)
+
+    if user is None:
+        return Response({"error": "Invalid credentials"}, status=400)
+
+    refresh = RefreshToken.for_user(user)
+
+    return Response({
+        "access": str(refresh.access_token)
+    })

@@ -30,9 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-ALLOWED_HOSTS = [
-    "fake-store-backend-production.up.railway.app"
-]
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'rest_framework',
